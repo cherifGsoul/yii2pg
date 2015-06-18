@@ -2,6 +2,8 @@
 
 namespace app\core\record;
 
+use creocoder\nestedsets\NestedSetsQueryBehavior;
+
 /**
  * This is the ActiveQuery class for [[Node]].
  *
@@ -19,6 +21,13 @@ class NodeQuery extends \yii\db\ActiveQuery
         }
         return parent::prepare($builder);
     }
+
+    public function behaviors() {
+        return [
+            NestedSetsQueryBehavior::className(),
+        ];
+    }
+
     /*public function active()
     {
         $this->andWhere('[[status]]=1');

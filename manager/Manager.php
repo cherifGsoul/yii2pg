@@ -11,15 +11,7 @@ class Manager extends \yii\base\Module
     public function init()
     {
         parent::init();
-        $this->components=[
-        	'user'=>[
-        		'class'=>'yii\web\User',
-        		'identityClass' => 'app\models\User',
-            	'enableAutoLogin' => true,
-        	],
-        ];
-
-        var_dump($this->components);exit;
+        Yii::configure($this, require(__DIR__ . '/config.php'));
     }
 
     // public function beforeAction($action)

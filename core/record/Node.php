@@ -3,6 +3,9 @@
 namespace app\core\record;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\SluggableBehavior;
+use creocoder\nestedsets\NestedSetsBehavior;
 
 /**
  * This is the model class for table "{{%node}}".
@@ -47,7 +50,7 @@ class Node extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'type', 'slug', 'lft', 'rgt', 'level'], 'required'],
+            [['title', 'type', 'slug'], 'required'],
             [['content', 'excerpt'], 'string'],
             [['root', 'lft', 'rgt', 'level', 'menu_order', 'status', 'created_by', 'updated_by', 'comment_count'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
@@ -114,5 +117,41 @@ class Node extends \yii\db\ActiveRecord
     public static function find()
     {
         return new NodeQuery(get_called_class());
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class'=>TimestampBehavior::className(),
+            ],
+            [
+                 'class' => SluggableBehavior::className(),
+                 'attribute' => 'title',
+            ],
+            [
+                'class' => NestedSetsBehavior::className(),
+                'treeAttribute' => 'root',
+                'depthAttribute' => 'level',
+            ],
+        ];
+    }
+
+    public function transactions()
+    {
+        return [
+            self::SCENARIO_DEFAULT => self::OP_ALL,
+        ];
+    }
+
+    public function beforeValidate() {
+        if (parent::beforeValidate()) {
+            if(!isset($this->type)) {
+                $this->type = 'article';
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 }

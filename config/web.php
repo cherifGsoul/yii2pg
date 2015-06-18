@@ -17,9 +17,9 @@ $config = [
         'node' => [
             'class' => 'app\modules\node\Module',
         ],
-        /*'contact'=>[
-            'class' => 'app\core\contact\ContactModule',
-        ]*/
+        'user' => [
+            'class' => 'app\modules\user\Module',
+        ],
     ],
     'components' => [
         'request' => [
