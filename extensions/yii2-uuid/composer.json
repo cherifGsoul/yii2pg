@@ -1,0 +1,21 @@
+{
+    "name": "cherif/yii2-uuid",
+    "description": "Yii2 behavior for UUID database attribute",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","uuid","behavior","domain","model"],
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Cherif BOUCHELAGHEM",
+            "email": "cherif.bouchelaghem@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "cherif\\uuid\\": ""
+        }
+    }
+}

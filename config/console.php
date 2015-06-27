@@ -1,6 +1,7 @@
 <?php
 
-Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
+Yii::setAlias('@tests', dirname(__DIR__) . '/tests/codeception');
+
 
 $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
@@ -13,6 +14,7 @@ return [
     'controllerMap' => [
     'fixture' => [
             'class' => 'yii\faker\FixtureController',
+            'templatePath' => '@tests/unit/templates/fixtures',
         ],
     ],
     'modules' => [

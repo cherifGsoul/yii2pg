@@ -1,6 +1,6 @@
 <?php
 
-namespace app\core\record;
+namespace app\core\node\record;
 
 use creocoder\nestedsets\NestedSetsQueryBehavior;
 

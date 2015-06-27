@@ -20,7 +20,9 @@
         "yiisoft/yii2-swiftmailer": "*",
         "twig/twig": "~1.0",
         "league/tactician": "^0.6.0",
-        "creocoder/yii2-nested-sets": "^0.9.0"
+        "creocoder/yii2-nested-sets": "^0.9.0",
+        "ramsey/uuid": "~2.8",
+        "nicolopignatelli/valueobjects": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

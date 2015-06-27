@@ -14,11 +14,11 @@ $config = [
         'manager'=>[
             'class'=>'app\manager\Manager',
         ],
-        'node' => [
-            'class' => 'app\modules\node\Module',
-        ],
+        // 'node' => [
+        //     'class' => 'app\core\node\Module',
+        // ],
         'user' => [
-            'class' => 'app\modules\user\Module',
+            'class' => 'app\core\user\Module',
         ],
     ],
     'components' => [

@@ -1,0 +1,21 @@
+{
+    "name": "cherif/yii2-juva",
+    "description": "Content Management System and Web Application Platform",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","cms","node","application"],
+    "license": "BSD-4-Clause",
+    "authors": [
+        {
+            "name": "Cherif BOUCHELAGHEM",
+            "email": "cherif.bouchelaghem@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "cherif\\juva\\": ""
+        }
+    }
+}

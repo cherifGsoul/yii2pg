@@ -1,6 +1,6 @@
 <?php
 
-namespace app\core\record;
+namespace app\core\node\record;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -51,7 +51,7 @@ class Node extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'type', 'slug'], 'required'],
+            [['title', 'type', 'slug', 'lft', 'rgt', 'level'], 'required'],
             [['content', 'excerpt'], 'string'],
             [['root', 'lft', 'rgt', 'level', 'menu_order', 'status', 'created_by', 'updated_by', 'comment_count'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
@@ -147,14 +147,15 @@ class Node extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeValidate() {
-        if (parent::beforeValidate()) {
-            if(!isset($this->type)) {
-                $this->type = 'article';
-            }
-            return true;
-        } else {
-            return false;
+    public static function instantiate($row)
+    {
+        switch ($row['type']) {
+            case Page::TYPE:
+                return new Page();
+            case Article::TYPE:
+                return new Article();
+            default:
+               return new self;
         }
     }
 }
